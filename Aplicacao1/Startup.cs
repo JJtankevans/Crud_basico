@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Aplicacao1.Data;
 
 namespace Aplicacao1
 {
@@ -24,6 +26,9 @@ namespace Aplicacao1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<Aplicacao1Context>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("Aplicacao1Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
